@@ -1,0 +1,34 @@
+{
+  "pages": [
+    {
+      "path": "pages/smodel/list",
+      "style": {
+        "navigationBarTitleText": "模型列表"
+      }
+    },
+    {
+      "path": "pages/smodel/add",
+      "style": {
+        "navigationBarTitleText": "模型新增"
+      }
+    },
+    {
+      "path": "pages/smodel/edit",
+      "style": {
+        "navigationBarTitleText": "模型编辑"
+      }
+    },
+    {
+      "path": "pages/spage/list",
+      "style": {
+        "navigationBarTitleText": "数据列表"
+      }
+    },
+    {
+      "path": "pages/spage/edit",
+      "style": {
+        "navigationBarTitleText": "数据修改"
+      }
+    }
+  ]
+}

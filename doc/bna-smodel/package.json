@@ -1,0 +1,87 @@
+{
+	"id": "bna-smodel",
+	"displayName": "Smodel-超级模型-UniAdmin低代码模型管理",
+	"version": "1.0.0",
+	"description": "低代码模型，通过界面配置管理后台增删改查功能，支持unicloud，支持26种常见类型",
+	"keywords": [
+		"bna-smodel", "smodel", "超级模型", "低代码", "模型管理"
+	],
+	"repository": "",
+	"engines": {
+		"HBuilderX": "^3.1.0"
+	},
+	"dcloudext": {
+		"category": [
+			"uniCloud",
+			"Admin插件"
+		],
+		"sale": {
+			"regular": {
+				"price": "9.80"
+			},
+			"sourcecode": {
+				"price": "9.90"
+			}
+		},
+		"contact": {
+			"qq": "278250658"
+		},
+		"declaration": {
+			"ads": "无",
+			"data": "无",
+			"permissions": "无"
+		},
+		"npmurl": ""
+	},
+	"uni_modules": {
+		"dependencies": [],
+		"encrypt": [
+			"uniCloud-aliyun/cloudfunctions/smodel/index.obj.js"
+		],
+		"platforms": {
+			"cloud": {
+				"tcb": "u",
+				"aliyun": "y"
+			},
+			"client": {
+				"Vue": {
+					"vue2": "y",
+					"vue3": "n"
+				},
+				"App": {
+					"app-vue": "n",
+					"app-nvue": "n"
+				},
+				"H5-mobile": {
+					"Safari": "n",
+					"Android Browser": "n",
+					"微信浏览器(Android)": "n",
+					"QQ浏览器(Android)": "n"
+				},
+				"H5-pc": {
+					"Chrome": "y",
+					"IE": "u",
+					"Edge": "u",
+					"Firefox": "u",
+					"Safari": "u"
+				},
+				"小程序": {
+					"微信": "n",
+					"阿里": "n",
+					"百度": "n",
+					"字节跳动": "n",
+					"QQ": "n",
+					"钉钉": "n",
+					"快手": "n",
+					"飞书": "n",
+					"京东": "n",
+					"小红书": "n"
+				},
+				"快应用": {
+					"华为": "n",
+					"联盟": "n"
+				}
+			}
+		}
+	}
+}

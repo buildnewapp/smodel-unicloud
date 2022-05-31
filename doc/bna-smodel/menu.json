@@ -1,0 +1,10 @@
+[
+	{
+		"menu_id": "smodel",
+		"name": "超级模型",
+		"icon": "uni-icons-list",
+		"url": "/pages/smodel/list",
+		"sort": 100,
+		"permission": []
+	}
+]
