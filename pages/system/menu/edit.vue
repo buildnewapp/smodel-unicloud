@@ -25,7 +25,7 @@
 			</uni-forms-item>
 			<uni-forms-item name="permission" label="权限列表" style="margin-bottom: 60px;" class="flex-center-x">
 				<uni-data-checkbox :multiple="true" v-model="formData.permission" collection="uni-id-permissions" field="permission_name as text, permission_id as value" />
-				<view class="uni-form-item-tips">
+				<view>
 					当用户拥有以上被选中的权限时，可以访问此菜单。建议仅对子菜单配置权限，父菜单会自动包含。如不选择权限，意味着仅超级管理员可访问本菜单
 				</view>
 			</uni-forms-item>

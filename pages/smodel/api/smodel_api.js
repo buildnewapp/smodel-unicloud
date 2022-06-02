@@ -74,6 +74,10 @@ function updateSmodel(id, data) {
 	return smodelOjb.updateSmodel(id, data)
 }
 
+function initSmodel(option) {
+	return smodelOjb.initSmodel(option)
+}
+
 export {
 	getSmodelList,
 	copySmodel,
@@ -84,5 +88,6 @@ export {
 	getAdminMenus,
 	addSmodelMenu,
 	addSmodel,
-	updateSmodel
+	updateSmodel,
+	initSmodel
 }

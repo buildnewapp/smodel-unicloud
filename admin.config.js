@@ -40,11 +40,6 @@ export default {
 	sideBar: { // 左侧菜单
 		// 配置静态菜单列表（放置在用户被授权的菜单列表下边）
 		staticMenu: [{
-			menu_id: "smodel",
-			text: '超级模型',
-			icon: 'uni-icons-paperplane',
-			value: '/pages/smodel/list',
-		}, {
 			menu_id: "demo",
 			text: '静态功能演示',
 			icon: 'uni-icons-list',

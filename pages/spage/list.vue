@@ -282,6 +282,8 @@
 				for (let col of this.girdData) {
 					if (col.type == 'field') {
 						col['_field'] = this.fieldMap[col.field]
+						console.log(col.field, col['_field'], this.fieldMap)
+						console.log(col['_field'].type)
 						col['_enums'] = {}
 						col['_filters'] = []
 						if (['radio', 'select', 'checkbox', 'multiselect'].indexOf(col['_field'].type) > -1) {

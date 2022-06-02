@@ -8,8 +8,20 @@
 // 数据库查询有最大返回条数限制，详见：https://uniapp.dcloud.net.cn/uniCloud/cf-database?id=limit
 // 详细JQL语法，请参考 https://uniapp.dcloud.net.cn/uniCloud/clientdb?id=jsquery
 
+// db.collection('smodel').remove()
+// db.collection('sfield').remove()
+// db.collection('uni-id-permissions').where({'permission_id':/smodel/}).remove()
+// db.collection('uni-id-permissions').where({'permission_id':/spage/}).remove()
+// db.collection('opendb-admin-menus').where({'menu_id':/smodel/}).remove()
+// db.collection('opendb-admin-menus').where({'menu_id':/spage/}).remove()
+
+// db.collection('smodel').doc('6283742a05206900010d1b93').get()
+
+//db.collection('smodel').doc('6283742a05206900010d1b93').update({'_id':'627e69c62319ec0001a664a3'})
 // 下面示例查询uni-id-users表的所有数据
-//db.collection('sfield').where({'smodel_id':new RegExp('^627780794324b9')}).get();
+// db.collection('sfield').where({'smodel_id':'6283742a05206900010d1b93'}).get();
+
+// db.collection('sfield').where({'smodel_id':'627e69c62319ec0001a664a3'}).update({'smodel_id':'6283742a05206900010d1b93'})
 // db.collection('sfield').field("auto_rule,auto_time,auto_type,col,defaultValue,extra,is_must,is_readonly,is_show,json,jsonarray,name,placeholder,remark,smodel_id,status,title,type,validate_rule,validate_time,validate_tips,validate_type").get();
 // db.collection('smodel').get()
 // db.collection('sfield').get()
@@ -45,13 +57,22 @@
 // db.collection('uni-id-permissions').where({comment:/自动添加/}).get()
 // db.collection('opendb-admin-menus').where({menu_id:'demoa_list'}).remove()
 // db.collection('uni-id-permissions').where({comment:/自动添加/}).remove()
-// db.collection('sfile').get()
+// db.collection('uni-id-permissions').get()
+// db.collection('opendb-admin-menus').remove()
 //db.collection('deme').doc('627f81d1994b1900019319c0').get()
-// db.collection('smodel').get()
+// db.collection('smodel').where({name:'sfield'}).get()
+// db.collection('smodel').where({name:'deme'}).get()
+
+// db.collection('smodel').doc('627780794324b90001fa281c').update({'_id':'sfield'})
+// db.collection('sfield').where({'smodel_id':'627e69c62319ec0001a664a3'}).get()
+// db.collection('uni-id-permissions').where({permission_id:/spage/}).get()
+//db.collection('sfield').where({'smodel_id':'627780794324b90001fa281c'}).update({'smodel_id':'sfield'})
 // const dbCmd = db.command
 // db.collection('sfield').where({'name':'smodel_id'}).get()
 
 
 
-db.collection('smodel').get()
+// db.collection('banner').remove()
 //db.collection('opendb-admin-menus').remove('62987152302d9f0001d5d84a')
+
+

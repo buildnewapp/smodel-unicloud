@@ -115,8 +115,6 @@
 </template>
 
 <script>
-	const db = uniCloud.database()
-	const dbCmd = db.command;
 	import {
 		smodel_log,
 		mode
