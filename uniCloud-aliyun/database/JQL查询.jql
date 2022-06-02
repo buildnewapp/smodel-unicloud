@@ -53,5 +53,5 @@
 
 
 
-db.collection('sfield').remove()
+db.collection('smodel').get()
 //db.collection('opendb-admin-menus').remove('62987152302d9f0001d5d84a')

@@ -66,12 +66,8 @@ async function addSmodelMenu(menus, permissions, that) {
 	}
 }
 
-async function addSmodel(form, that) {
-	try {
-		await smodelOjb.addSmodel(form)
-	} catch (e) {
-		that.$message.error(e.message || '请求服务失败');
-	}
+async function addSmodel(form) {
+	await smodelOjb.addSmodel(form)
 }
 
 function updateSmodel(id, data) {

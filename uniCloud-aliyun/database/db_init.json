@@ -521,28 +521,6 @@
 				"type": "db"
 			},
 			{
-				"_id": "6284ce460d082200014aa432",
-				"addBtn": true,
-				"create_time": 1652870725936,
-				"delBtn": false,
-				"editBtn": true,
-				"exportBtn": false,
-				"formGroups": [{
-					"fields": [],
-					"name": "基础"
-				}],
-				"formType": "base",
-				"girdData": [],
-				"importBtn": true,
-				"multBtn": false,
-				"name": "banner",
-				"searchFields": [],
-				"searchFormFields": [],
-				"status": -1,
-				"title": "广告位",
-				"type": "db"
-			},
-			{
 				"_id": "628b252a0cb5d500018a52bc",
 				"addBtn": true,
 				"collection": "field_enums",

@@ -43,7 +43,7 @@ export default {
 			menu_id: "smodel",
 			text: '超级模型',
 			icon: 'uni-icons-paperplane',
-			url: '/pages/smodel/list',
+			value: '/pages/smodel/list',
 		}, {
 			menu_id: "demo",
 			text: '静态功能演示',
