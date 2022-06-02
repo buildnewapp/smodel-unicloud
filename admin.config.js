@@ -44,7 +44,7 @@ export default {
 			text: '超级模型',
 			icon: 'uni-icons-paperplane',
 			url: '/pages/smodel/list',
-		},{
+		}, {
 			menu_id: "demo",
 			text: '静态功能演示',
 			icon: 'uni-icons-list',

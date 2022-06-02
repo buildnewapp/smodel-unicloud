@@ -50,3 +50,8 @@
 // db.collection('smodel').get()
 // const dbCmd = db.command
 // db.collection('sfield').where({'name':'smodel_id'}).get()
+
+
+
+db.collection('sfield').remove()
+//db.collection('opendb-admin-menus').remove('62987152302d9f0001d5d84a')

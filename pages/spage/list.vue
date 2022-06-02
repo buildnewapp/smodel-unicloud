@@ -266,10 +266,8 @@
 				}
 			},
 			async initPageData() {
-				this.modelData = await fetchSpageList(this.smodel.collection, this.form, this.fieldMap, this.orderBy,
-					this
-					.currentPage, this.pageSize,
-					this)
+				this.modelData = await fetchSpageList(this.smodel.collection, this.form, this.orderBy,
+					this.currentPage, this.pageSize,this)
 				this.loading = false
 			},
 			async initSmodelFields() {
