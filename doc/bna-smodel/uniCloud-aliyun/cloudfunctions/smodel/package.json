@@ -2,6 +2,6 @@
   "name": "smodel",
   "dependencies": {},
   "extensions": {
-    
+    "uni-cloud-jql": {}
   }
 }
