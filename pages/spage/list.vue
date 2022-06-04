@@ -123,6 +123,12 @@
 				<el-button v-if="smodel.exportBtn" type="success" size="small" icon="el-icon-document-copy" @click="">
 					自定义导出
 				</el-button>
+        <el-button v-if="debug" type="danger" size="small" icon="el-icon-s-operation" @click="fieldManage">
+          字段管理
+        </el-button>
+        <el-button v-if="debug" type="danger" size="small" icon="el-icon-setting" @click="smodelEdit">
+          模型编辑
+        </el-button>
 			</el-row>
 		</view>
 		<view class="table">
@@ -202,6 +208,7 @@
 
 <script>
 	import {
+	  debug,
 		smodel_log
 	} from '../smodel/config.js'
   import {
@@ -219,8 +226,9 @@
 	export default {
 		data() {
 			return {
+        debug:debug,
 				sfrom: '', //组件模式,selectone选择器
-				spage: 'sfield',
+				spage: 'deme',
 				smodel: {},
 				loading: true,
 				fieldMap: {},
@@ -263,10 +271,10 @@
 			async init(option) {
 				if (option.spage) {
 					this.spage = option.spage
-					this.form = Object.assign({}, option, this.form)
-					await this.initSmodelFields()
-					this.initPageData()
 				}
+				this.form = Object.assign({}, option, this.form)
+				await this.initSmodelFields()
+				this.initPageData()
 			},
 			async initPageData() {
 				this.modelData = await fetchSpageList(this.smodel.collection, this.form, this.orderBy,
@@ -282,8 +290,6 @@
 				for (let col of this.girdData) {
 					if (col.type == 'field') {
 						col['_field'] = this.fieldMap[col.field]
-						console.log(col.field, col['_field'], this.fieldMap)
-						console.log(col['_field'].type)
 						col['_enums'] = {}
 						col['_filters'] = []
 						if (['radio', 'select', 'checkbox', 'multiselect'].indexOf(col['_field'].type) > -1) {
@@ -361,6 +367,13 @@
 				this.initPageData()
 			},
 			handleDelete(index, row) {},
+      fieldManage(){
+        uni.navigateTo({url:'/pages/spage/list?spage=sfield&smodel_id='+this.smodel._id})
+      },
+      smodelEdit(){
+        uni.navigateTo({url:'/pages/smodel/edit?spage='+this.smodel.name})
+      },
+
 		},
 		// 监听属性
 		watch: {},

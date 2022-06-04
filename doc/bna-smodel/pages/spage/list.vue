@@ -220,7 +220,7 @@
 		data() {
 			return {
 				sfrom: '', //组件模式,selectone选择器
-				spage: 'sfield',
+				spage: 'deme',
 				smodel: {},
 				loading: true,
 				fieldMap: {},
@@ -263,10 +263,10 @@
 			async init(option) {
 				if (option.spage) {
 					this.spage = option.spage
-					this.form = Object.assign({}, option, this.form)
-					await this.initSmodelFields()
-					this.initPageData()
 				}
+				this.form = Object.assign({}, option, this.form)
+				await this.initSmodelFields()
+				this.initPageData()
 			},
 			async initPageData() {
 				this.modelData = await fetchSpageList(this.smodel.collection, this.form, this.orderBy,

@@ -191,17 +191,6 @@
 											<el-option label="区域二" value="beijing"></el-option>
 										</el-select>
 									</el-form-item>
-									<el-form-item label="活动时间">
-										<el-col :span="11">
-											<el-date-picker type="date" placeholder="选择日期" v-model="girdProps.date1"
-												style="width: 100%;"></el-date-picker>
-										</el-col>
-										<el-col class="u-text-center" :span="2">-</el-col>
-										<el-col :span="11">
-											<el-time-picker placeholder="选择时间" v-model="girdProps.date2"
-												style="width: 100%;"></el-time-picker>
-										</el-col>
-									</el-form-item>
 									<el-form-item label="特殊资源">
 										<el-radio-group v-model="girdProps.resource">
 											<el-radio border label="线上品牌商赞助"></el-radio>
@@ -629,7 +618,7 @@
 			},
 			fieldManage() {
 				uni.navigateTo({
-					'url': `../spage/list?smodel_id=${this.id}`
+					'url': `../spage/list?spage=sfield&smodel_id=${this.id}`
 				})
 			},
 			fieldEdit(field) {
