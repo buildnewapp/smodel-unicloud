@@ -123,12 +123,12 @@
 				<el-button v-if="smodel.exportBtn" type="success" size="small" icon="el-icon-document-copy" @click="">
 					自定义导出
 				</el-button>
-        <el-button v-if="debug" type="danger" size="small" icon="el-icon-s-operation" @click="fieldManage">
-          字段管理
-        </el-button>
-        <el-button v-if="debug" type="danger" size="small" icon="el-icon-setting" @click="smodelEdit">
-          模型编辑
-        </el-button>
+				<el-button v-if="debug" type="danger" size="small" icon="el-icon-s-operation" @click="fieldManage">
+					字段管理
+				</el-button>
+				<el-button v-if="debug" type="danger" size="small" icon="el-icon-setting" @click="smodelEdit">
+					模型编辑
+				</el-button>
 			</el-row>
 		</view>
 		<view class="table">
@@ -146,15 +146,15 @@
 								v-if="['string','int','text','colorpicker','datepicker','timepicker','slider'].indexOf(col._field.type)>-1">
 								{{ scope.row[col.field] }}
 							</view>
-              <view v-else-if="['datetimepicker'].indexOf(col._field.type)>-1">
-                {{ scope.row[col.field]|time_format}}
-              </view>
+							<view v-else-if="['datetimepicker'].indexOf(col._field.type)>-1">
+								{{ scope.row[col.field]|time_format}}
+							</view>
 							<el-tag v-else-if="['radio','select'].indexOf(col._field.type)>-1" size="small">
 								{{ col._enums[scope.row[col.field]] }}
 							</el-tag>
 							<view v-else-if="['checkbox','multiselect'].indexOf(col._field.type)>-1">
-								<span class="u-m-r-10 u-font-xs"
-									v-for="val in scope.row[col.field]">{{col._enums[val]}}</span>
+								<el-tag v-for="val in scope.row[col.field]" size="mini" class="u-m-r-8">
+									{{col._enums[val]}}</el-tag>
 							</view>
 							<view v-else-if="['selectone','cascader','sliderrange'].indexOf(col._field.type)>-1">
 								{{ scope.row[col.field] }}
@@ -171,9 +171,11 @@
 							</el-tag>
 						</template>
 					</el-table-column>
-					<el-table-column v-else-if="col.type=='fun'" :label="col.label" :show-overflow-tooltip="true">
+					<el-table-column v-else-if="col.type=='fun'" :prop="col.field" :align="col.align" :label="col.label"
+						:width="col.width?col.width:'auto'" :show-overflow-tooltip="true"
+						:sortable="col.sortable?'custom':false">
 						<template slot-scope="scope">
-							fun
+							<SpageJsfun :col="col" :row="scope.row"></SpageJsfun>
 						</template>
 					</el-table-column>
 					<el-table-column v-else-if="col.type=='action' && sfrom==''" :label="col.label" fixed="right"
@@ -208,14 +210,15 @@
 
 <script>
 	import {
-	  debug,
+		debug,
 		smodel_log
 	} from '../smodel/config.js'
-  import {
-    friendlyDate
-  } from '../smodel/components/date-format.js'
+	import {
+		friendlyDate
+	} from '../smodel/components/date-format.js'
 	import SmodelJson from '../smodel/components/smodel_json.vue'
 	import SpageEditBtn from '../smodel/components/spage_edit_btn.vue'
+	import SpageJsfun from '../smodel/components/spage_jsfun.vue'
 
 	import {
 		getSmodelInfo
@@ -226,7 +229,7 @@
 	export default {
 		data() {
 			return {
-        debug:debug,
+				debug: debug,
 				sfrom: '', //组件模式,selectone选择器
 				spage: 'deme',
 				smodel: {},
@@ -254,7 +257,10 @@
 		// 监听 - 页面每次【加载时】执行(如：前进)
 		onLoad(options = {}) {
 			this.init(options);
-			uni.$on(`${this.spage}_add_ok`, () => this.init({spage:this.spage,...this.form}))
+			uni.$on(`${this.spage}_add_ok`, () => this.init({
+				spage: this.spage,
+				...this.form
+			}))
 		},
 		onUnload() {
 			uni.$off(`${this.spage}_add_ok`)
@@ -278,12 +284,13 @@
 			},
 			async initPageData() {
 				this.modelData = await fetchSpageList(this.smodel.collection, this.form, this.orderBy,
-					this.currentPage, this.pageSize,this)
+					this.currentPage, this.pageSize, this)
 				this.loading = false
 			},
 			async initSmodelFields() {
 				let res = await getSmodelInfo(this.spage)
 				this.smodel = res.smodel
+				this.pageSize = this.smodel.pageSize
 				this.fields = res.fields
 				this.fieldMap = res.fieldMap
 				this.girdData = this.smodel.girdData
@@ -367,27 +374,32 @@
 				this.initPageData()
 			},
 			handleDelete(index, row) {},
-      fieldManage(){
-        uni.navigateTo({url:'/pages/spage/list?spage=sfield&smodel_id='+this.smodel._id})
-      },
-      smodelEdit(){
-        uni.navigateTo({url:'/pages/smodel/edit?spage='+this.smodel.name})
-      },
+			fieldManage() {
+				uni.navigateTo({
+					url: '/pages/spage/list?spage=sfield&smodel_id=' + this.smodel._id
+				})
+			},
+			smodelEdit() {
+				uni.navigateTo({
+					url: '/pages/smodel/edit?spage=' + this.smodel.name
+				})
+			},
 
 		},
 		// 监听属性
 		watch: {},
 		// 过滤器
 		filters: {
-      time_format(v) {
-        return friendlyDate(new Date(v), 'yyyy-MM-dd')
-      }
-    },
+			time_format(v) {
+				return friendlyDate(new Date(v), 'yyyy-MM-dd')
+			}
+		},
 		// 计算属性
 		computed: {},
 		components: {
 			SmodelJson,
-			SpageEditBtn
+			SpageEditBtn,
+			SpageJsfun
 		}
 	};
 </script>

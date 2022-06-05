@@ -270,6 +270,13 @@
 							</el-form-item>
 						</el-col>
 					</el-row>
+					<el-row>
+						<el-col :span="8">
+							<el-form-item label="每页数量">
+								<el-input-number v-model="form.pageSize" :min="1" :max="1000" label="默认10" size="mini"></el-input-number>
+							</el-form-item>
+						</el-col>
+					</el-row>
 
 
 				</el-tab-pane>
