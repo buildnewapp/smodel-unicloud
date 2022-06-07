@@ -172,8 +172,7 @@
 						</template>
 					</el-table-column>
 					<el-table-column v-else-if="col.type=='fun'" :prop="col.field" :align="col.align" :label="col.label"
-						:width="col.width?col.width:'auto'" :show-overflow-tooltip="true"
-						:sortable="col.sortable?'custom':false">
+						:width="col.width?col.width:'auto'" :sortable="col.sortable?'custom':false">
 						<template slot-scope="scope">
 							<SpageJsfun :col="col" :row="scope.row"></SpageJsfun>
 						</template>
@@ -290,7 +289,7 @@
 			async initSmodelFields() {
 				let res = await getSmodelInfo(this.spage)
 				this.smodel = res.smodel
-				this.pageSize = this.smodel.pageSize
+				this.pageSize = this.smodel.pageSize||10
 				this.fields = res.fields
 				this.fieldMap = res.fieldMap
 				this.girdData = this.smodel.girdData

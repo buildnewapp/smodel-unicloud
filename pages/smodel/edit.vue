@@ -129,13 +129,28 @@
 										<el-input v-model="scope.row.field" size="mini" placeholder="请输入内容"></el-input>
 									</template>
 								</el-table-column>
-								<el-table-column label="函数" width="160">
+								<el-table-column label="前端函数" width="150" :render-header="renderJsfunHeader">
 									<template slot-scope="scope">
-										<el-autocomplete size="mini" class="inline-input" v-model="scope.row.fun"
-											:fetch-suggestions="girdFunSuggestions" placeholder="字段处理函数">
+										<el-autocomplete size="mini" class="inline-input" v-model="scope.row.jsfun"
+											:fetch-suggestions="girdFunSuggestions" placeholder="前端函数">
 											<template slot-scope="{ item }">
-												<view class="u-font-lg">{{ item.value }}</view>
-												<view class="u-font-xs u-line-height-12">{{ item.title }}</view>
+												<view class="u-font-sm u-line-height-15">
+													<view>{{ item.value }}</view>
+													<view>{{ item.title }}</view>
+												</view>
+											</template>
+										</el-autocomplete>
+									</template>
+								</el-table-column>
+								<el-table-column label="后端函数" width="150" :render-header="renderApifunHeader">
+									<template slot-scope="scope">
+										<el-autocomplete size="mini" class="inline-input" v-model="scope.row.apifun"
+											:fetch-suggestions="girdFunSuggestions" placeholder="后端函数">
+											<template slot-scope="{ item }">
+												<view class="u-font-sm u-line-height-15">
+													<view>{{ item.value }}</view>
+													<view>{{ item.title }}</view>
+												</view>
 											</template>
 										</el-autocomplete>
 									</template>
@@ -389,7 +404,7 @@
 					},
 					{
 						value: 'fun',
-						label: '函数'
+						label: '前端函数'
 					},
 					{
 						value: 'action',
@@ -538,17 +553,26 @@
 			},
 			girdFunSuggestions(queryString, cb) {
 				let funs = [{
-					"value": "get_user_info",
-					"title": "获取用户信息"
+					"value": "show_rectangle_image_field",
+					"title": "单图长方形显示"
+				},{
+					"value": "show_square_image_field",
+					"title": "单图正方形显示"
 				}, {
-					"value": "get_admin_info",
-					"title": "获取管理员信息"
+					"value": "copy_field",
+					"title": "拷贝内容"
 				}];
 				var results = queryString ? funs.filter((fun) => {
 					return (fun.value.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
 				}) : funs;
 
 				cb(results);
+			},
+			renderJsfunHeader(h, { column, $index }){
+				return h('el-tooltip',{props:{'content':'参看示例:smodel/components/spage_jsfun.vue，类型选择前端函数','placement':'top'}},[h('div','前端函数(?)')])
+			},
+			renderApifunHeader(h, { column, $index }) {
+				return h('el-tooltip',{props:{'content':'参看示例:cloudfunctions/spage/spage_apifun.js,只要填写就会执行','placement':'top'}},[h('div','后端函数(?)')])
 			},
 			girdFunHandleSelect(item) {
 				smodel_log(item);

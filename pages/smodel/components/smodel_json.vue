@@ -134,8 +134,14 @@
 		mounted() {},
 		watch: {
 			value(n) {
-				//smodel_log('json watch value', n)
-				if (n && n.length > 0) this.forms = n
+				smodel_log('json watch value', n)
+				if (n) {
+					if (n instanceof Array) {
+						if (n.length>0) this.forms = n
+					} else {
+						this.forms = [n]
+					}
+				}
 			}
 		},
 		filters: {
