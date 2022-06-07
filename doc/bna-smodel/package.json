@@ -35,6 +35,9 @@
 	},
 	"uni_modules": {
 		"dependencies": [],
+		"encrypt": [
+			"uniCloud-aliyun/cloudfunctions/smodel/index.obj.js"
+		],
 		"platforms": {
 			"cloud": {
 				"tcb": "u",
